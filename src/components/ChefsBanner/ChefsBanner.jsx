@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
-
+import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const ChefsBanner = ({ info }) => {
 
     const { name, imageUrl, rating, ingredients, method } = info;
 
     const [clicked, setClicked] = useState(false);
-    function handleClick() {
-        setClicked(true);
-        isCliked()
-    }
 
-    const isCliked = () => {
-        setClicked(true)
-    }
+    // React hot toast applied
+
+    const handleClick = () =>{
+        setClicked(true);
+        if(setClicked){
+            toast.success("Added to Favorite!")
+        }
+    } 
 
     return (
         <div>
@@ -32,6 +34,7 @@ const ChefsBanner = ({ info }) => {
                         </div>
                         <div>
                             <button onClick={handleClick} disabled={clicked} className="btn btn-primary my-6 bg-black text-yellow-200 outline-none hover:bg-white hover:text-black">Add To Favorite</button>
+                            <Toaster />
                         </div>
                     </div>
                 </div>

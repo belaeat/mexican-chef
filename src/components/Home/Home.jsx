@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ChefsCard from '../ChefsCard/ChefsCard';
-// import FoodGallery from '../FoodGallery/FoodGallery';
+
 
 const Home = () => {
 
@@ -45,18 +45,6 @@ const Home = () => {
                     }
                 </div>
             </div>
-            {/* <div className='my-12'>
-                <div className='text-white text-center my-12'>
-                    <h2 className='font-bold text-3xl mb-8'>Welcome to our Food Gallery</h2>
-                    <p>Here you can find our best selling recipes around the world. We are not just famous in our country, we are famous worldwide!!!</p>
-                </div>
-                {
-                    recipes.map(recipe => <FoodGallery
-                        key={recipe.id}
-                        recipe={recipe}
-                    ></FoodGallery>)
-                }
-            </div> */}
         </div>
     );
 };
