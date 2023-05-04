@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='grid md:grid-cols-2 g-4'>
+        <div className='grid md:grid-cols-2 g-4 my-12'>
             <div className='p-4 bg-green-300 rounded-lg m-4 text-black'>
                 <h2 className='font-bold text-2xl mb-4'>What is the differences between uncontrolled and controlled components?</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptate minima, debitis fuga velit sit quos quidem aut non, enim quaerat inventore sunt culpa eaque perferendis sequi itaque dolore iure!</p>

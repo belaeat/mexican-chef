@@ -10,7 +10,6 @@ const Home = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold text-white">Welcome</h1>
                         <p className="mb-5 text-white">Mexican Chef is a home for Mexican food lovers. Here you can find best Mexican chefs and their popular recipes. Stay tuned, many more recipes to come!!!!</p>
-                        {/* <button className="btn btn-primary">Get Started</button> */}
                     </div>
                 </div>
             </div>
