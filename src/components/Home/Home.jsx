@@ -25,7 +25,7 @@ const Home = () => {
             </div>
             <div className='my-12 mx-auto grid gap-4 w-[70%]'>
                 <h2 className='text-3xl font-bold text-center text-white mt-12 mb-8'>Meet Our Chefs</h2>
-                <p className='text-center mb-12'>You will be amazed by the recipes from our chefs. They are well experienced. You will remember your meal forever. Taste guaranteed!</p>
+                <p className='text-center mb-12 text-white'>You will be amazed by the recipes from our chefs. They are well experienced. You will remember your meal forever. Taste guaranteed!</p>
                 {
                     chefs.map(chef => <ChefsCard
                         key={chef.id}

@@ -18,9 +18,6 @@ const ChefsBanner = ({ info }) => {
                     </div>
                 </div>
             </div>
-            <div >
-
-            </div>
         </div>
     );
 };

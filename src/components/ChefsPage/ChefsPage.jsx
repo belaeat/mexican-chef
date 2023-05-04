@@ -11,6 +11,7 @@ const ChefsPage = () => {
 
     return (
         <div>
+            <h2 className='font-bold text-white text-center text-3xl my-12'>Chef Details</h2>
             <div className='flex items-center rounded-lg bg-white text-black my-12'>
                 <img className='w-[50%]' src={checkData.chef.chefUrl} alt="" />
                 <div className='ms-6'>
