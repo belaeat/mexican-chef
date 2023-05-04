@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: 'chefspage/:id',
         element: <ChefsPage></ChefsPage>,
-        loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
+        loader: ({ params }) => fetch(`https://b7a10-mexican-chef-server-side-belaeat.vercel.app/chefs/${params.id}`)
       }
     ]
   }

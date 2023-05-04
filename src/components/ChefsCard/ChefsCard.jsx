@@ -8,7 +8,7 @@ const ChefsCard = ({ chef }) => {
     return (
         <div>
 
-            <div className="bg-yellow-200 shadow-xl flex rounded-xl text-black">
+            <div className="bg-yellow-200 shadow-xl flex rounded-xl text-black mb-12">
                 <img className='w-[50%]' src={imageUrl} alt="Movie" />
                 <div className="card-body">
                     <h2 className="card-title font-bold mb-2">{name}</h2>
