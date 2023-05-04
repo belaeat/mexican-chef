@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
 const auth = getAuth(app);
 
 const Login = () => {
+    const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider() 
 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -36,7 +38,32 @@ const Login = () => {
             })
     }
 
+    // Github login
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                setSuccess('Login Successful!')
+                setError('');
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
 
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                setSuccess('Login Successful!')
+                setError('');
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
 
     return (
         <form onSubmit={handleLogin} className="hero min-h-screen bg-base-200 my-12">
@@ -61,8 +88,8 @@ const Login = () => {
                         <div className="form-control mt-4">
                             <p className='mb-2 link link-hover'><small>New here? Please <Link to='/register'>Register!</Link></small></p>
                             <button className="btn btn-primary mb-2">Login</button>
-                            <button className="btn bg-white text-black hover:text-white mb-2"><FaGoogle className='me-2'></FaGoogle> Google Login</button>
-                            <button className="btn bg-white text-black"><FaGithub className='me-2' />GitHub Login</button>
+                            <button onClick={handleGoogleSignIn} className="btn bg-white text-black hover:text-white mb-2"><FaGoogle className='me-2'></FaGoogle> Google Login</button>
+                            <button onClick={handleGithubSignIn} className="btn bg-white text-black"><FaGithub className='me-2' />GitHub Login</button>
                         </div>
                         <p className='text-red-500'>{error}</p>
                         <p className='text-green-500'>{success}</p>
