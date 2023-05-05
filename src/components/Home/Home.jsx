@@ -23,7 +23,7 @@ const Home = () => {
             .then(data => setRecipes(data))
             .catch(error => console.error(error))
     }, [])
-
+    
     return (
         <div className='mx-auto'>
             <div className="hero min-h-screen mt-8 mb-12" style={{ backgroundImage: `url(./banner.jpg)` }}>
