@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
 import app from '../../firebase/firebase.config';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const auth = getAuth(app)
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext)
 
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -28,22 +30,13 @@ const Register = () => {
         }
 
         // create user in firebase
-
-        createUserWithEmailAndPassword(auth, email, password)
+        createUser(email, password)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-                setError('');
-                event.target.reset();
-
-                setSuccess('User has been created successfully')
-
-                // for display user name
-                updateUserData(result.user, name)
+                const createdUser = result.user
+                console.log(createdUser)
             })
             .catch(error => {
-                console.error(error.message);
-                setError(error.message);
+                console.log(error)
             })
 
 
@@ -98,7 +91,7 @@ const Register = () => {
                             </div>
                             <div className="form-control mt-4">
                                 <p className='mb-2 link link-hover'><small>Already have an account? <Link to='/login'>Login here.</Link></small></p>
-                                <button className="btn btn-primary mb-2">Register</button>
+                                <button className="btn bg-yellow-300 text-black hover:text-white">Register</button>
                             </div>
                             <p className='text-danger'>{error}</p>
                             <p className='text-success'>{success}</p>

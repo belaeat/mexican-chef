@@ -8,7 +8,7 @@ const auth = getAuth(app);
 
 const Login = () => {
     const googleProvider = new GoogleAuthProvider()
-    const githubProvider = new GithubAuthProvider() 
+    const githubProvider = new GithubAuthProvider()
 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -87,7 +87,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-4">
                             <p className='mb-2 link link-hover'><small>New here? Please <Link to='/register'>Register!</Link></small></p>
-                            <button className="btn btn-primary mb-2">Login</button>
+                            <button className="btn mb-2 bg-yellow-300 text-black hover:text-white">Login</button>
                             <button onClick={handleGoogleSignIn} className="btn bg-white text-black hover:text-white mb-2"><FaGoogle className='me-2'></FaGoogle> Google Login</button>
                             <button onClick={handleGithubSignIn} className="btn bg-white text-black"><FaGithub className='me-2' />GitHub Login</button>
                         </div>
