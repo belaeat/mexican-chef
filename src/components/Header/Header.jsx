@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Tooltip } from 'react-tooltip'
 
@@ -32,8 +32,8 @@ const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
+                        <li><NavLink to='/'>Home</NavLink></li>
+                        <li><NavLink to='/blog'>Blog</NavLink></li>
                     </ul>
                 </div>
                 <img src="" alt="" />
