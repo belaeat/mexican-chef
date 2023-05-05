@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 import { signInWithPopup, GithubAuthProvider, GoogleAuthProvider, getAuth } from 'firebase/auth';
@@ -8,14 +8,26 @@ import app from '../../firebase/firebase.config';
 const auth = getAuth(app);
 
 const Login = () => {
+    
+    // google and github auth provider 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
 
 
     const { signIn } = useContext(AuthContext)
+
+    // redirecting user to the desired location
+    const navigate = useNavigate();
+    const location = useLocation()
+    console.log("login page location", location)
+    const from = location.state?.from?.pathname || '/'
+
+
+    // setting error or success message
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
+    // login with email and pass 
     const handleLogin = event => {
         event.preventDefault()
 
@@ -28,6 +40,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError("Email and Password didn't matched!")
@@ -41,7 +54,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 setSuccess('Login Successful!')
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
                 setError('');
             })
             .catch(error => {
@@ -56,7 +69,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 setSuccess('Login Successful!')
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
                 setError('');
             })
             .catch(error => {

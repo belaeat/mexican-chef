@@ -41,7 +41,7 @@ const Header = () => {
                     {
                         user &&
                         <>
-                            <img src={user.photoURL} alt={user.displayName} data-tooltip-id={user.displayName} data-tooltip-content={user.displayName} /><Tooltip id={user.displayName} />
+                            <img className='mask mask-hexagon-2 h-11' src={user.photoURL} alt={user.displayName} data-tooltip-id={user.displayName} data-tooltip-content={user.displayName} /><Tooltip id={user.displayName} />
                         </>
                     }
                     {user ?
