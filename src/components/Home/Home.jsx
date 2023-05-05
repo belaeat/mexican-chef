@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ChefsCard from '../ChefsCard/ChefsCard';
 import Reservation from '../Reservation/Reservation';
 
-
 const Home = () => {
 
     const [chefs, setChefs] = useState([])
     const [recipes, setRecipes] = useState([])
 
+    // loading data from chefs.json
     useEffect(() => {
         fetch('https://b7a10-mexican-chef-server-side-belaeat.vercel.app/chefs')
             .then(res => res.json())
@@ -16,6 +16,7 @@ const Home = () => {
     }, [])
 
 
+    // loading data of recipes.json
     useEffect(() => {
         fetch('https://b7a10-mexican-chef-server-side-belaeat.vercel.app/recipes')
             .then(res => res.json())
