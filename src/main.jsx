@@ -12,6 +12,7 @@ import Register from './components/Register/Register';
 import Blog from './components/Blog/Blog';
 import ChefsPage from './components/ChefsPage/ChefsPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'chefspage/:id',
-        element: <ChefsPage></ChefsPage>,
+        element: <PrivateRoute><ChefsPage></ChefsPage></PrivateRoute>,
         loader: ({ params }) => fetch(`https://b7a10-mexican-chef-server-side-belaeat.vercel.app/chefs/${params.id}`)
       }
     ]

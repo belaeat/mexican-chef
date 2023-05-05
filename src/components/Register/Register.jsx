@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
+import { getAuth, updateProfile } from 'firebase/auth'
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -11,7 +11,7 @@ const Register = () => {
 
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-    const [url, setUrl] = useState("");
+    // const [url, setUrl] = useState("");
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -38,23 +38,20 @@ const Register = () => {
             .catch(error => {
                 console.log(error)
             })
-
-
     }
 
     // for display user name
-    const updateUserData = (user, name) => {
-        updateProfile(user, {
-            displayName: name
-        })
-            .then(() => {
-                console.log('User Name Updated')
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
-
+    // const updateUserData = (user, name) => {
+    //     updateProfile(user, {
+    //         displayName: name
+    //     })
+    //         .then(() => {
+    //             console.log('User Name Updated')
+    //         })
+    //         .catch(error => {
+    //             setError(error.message)
+    //         })
+    // }
 
     return (
         <div>
