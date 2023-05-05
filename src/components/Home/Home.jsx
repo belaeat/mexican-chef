@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ChefsCard from '../ChefsCard/ChefsCard';
+import Reservation from '../Reservation/Reservation';
 
 
 const Home = () => {
@@ -44,6 +45,9 @@ const Home = () => {
                         ></ChefsCard>)
                     }
                 </div>
+            </div>
+            <div className='my-12'>
+                <Reservation></Reservation>
             </div>
         </div>
     );
