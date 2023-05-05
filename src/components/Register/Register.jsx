@@ -1,57 +1,37 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth, updateProfile } from 'firebase/auth'
-import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
 
-const auth = getAuth(app)
-
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
-
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-    // const [url, setUrl] = useState("");
+
+    const { createUser } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
-        setSuccess('');
-        setError('');
 
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        const url = event.target.url.value
-        const name = event.target.name.value;
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const url = form.url.value;
         console.log(name, email, password, url)
 
-        // validate
-        if (password.length <= 6) {
-            setError('Password should be at least 6 characters')
-        }
-
-        // create user in firebase
         createUser(email, password)
             .then(result => {
-                const createdUser = result.user
+                const createdUser = result.user;
                 console.log(createdUser)
             })
             .catch(error => {
                 console.log(error)
             })
-    }
 
-    // for display user name
-    // const updateUserData = (user, name) => {
-    //     updateProfile(user, {
-    //         displayName: name
-    //     })
-    //         .then(() => {
-    //             console.log('User Name Updated')
-    //         })
-    //         .catch(error => {
-    //             setError(error.message)
-    //         })
-    // }
+        // validate
+        if (password.length <= 6) {
+            setError('Password should be at least 6 characters')
+        }
+    }
 
     return (
         <div>
@@ -90,8 +70,8 @@ const Register = () => {
                                 <p className='mb-2 link link-hover'><small>Already have an account? <Link to='/login'>Login here.</Link></small></p>
                                 <button className="btn bg-yellow-300 text-black hover:text-white">Register</button>
                             </div>
-                            <p className='text-danger'>{error}</p>
-                            <p className='text-success'>{success}</p>
+                            <p className='text-red-500'>{error}</p>
+                            <p className='text-green-400'>{success}</p>
                         </div>
                     </div>
                 </div>

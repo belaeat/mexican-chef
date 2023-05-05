@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
-import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
+import { signInWithPopup, GithubAuthProvider, GoogleAuthProvider, getAuth } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 const auth = getAuth(app);
 
@@ -11,27 +11,26 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
 
-    const { signIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
-    console.log('login page location', location)
-    const from = location.state?.from?.pathname || '/'
+
+    const { signIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const handleLogin = event => {
-        event.preventDefault();
+        event.preventDefault()
+
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        console.log(email, password)
 
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
-                navigate(from, { replace: true })
+                console.log(loggedUser)
             })
             .catch(error => {
-                console.log(error);
+                setError("Email and Password didn't matched!")
             })
     }
 
@@ -42,7 +41,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 setSuccess('Login Successful!')
-                navigate(from, { replace: true })
+                // navigate(from, { replace: true })
                 setError('');
             })
             .catch(error => {
@@ -57,7 +56,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 setSuccess('Login Successful!')
-                navigate(from, { replace: true })
+                // navigate(from, { replace: true })
                 setError('');
             })
             .catch(error => {
@@ -87,7 +86,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-4">
                             <p className='mb-2 link link-hover'><small>New here? Please <Link to='/register'>Register!</Link></small></p>
-                            <button onClick={handleLogin} className="btn mb-2 bg-yellow-300 text-black hover:text-white">Login</button>
+                            <button className="btn mb-2 bg-yellow-300 text-black hover:text-white">Login</button>
                             <button onClick={handleGoogleSignIn} className="btn bg-white text-black hover:text-white mb-2"><FaGoogle className='me-2'></FaGoogle> Google Login</button>
                             <button onClick={handleGithubSignIn} className="btn bg-white text-black"><FaGithub className='me-2' />GitHub Login</button>
                         </div>
@@ -96,7 +95,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-
         </form>
     );
 };
