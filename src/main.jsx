@@ -10,8 +10,6 @@ import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Blog from './components/Blog/Blog';
-// import Recipes from './components/Recipes/Recipes';
-import ChefsInfo from './components/ChefsPage/ChefsPage';
 import ChefsPage from './components/ChefsPage/ChefsPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 
